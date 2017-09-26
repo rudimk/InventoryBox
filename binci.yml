@@ -1,0 +1,23 @@
+from: jhipster/jhipster
+# services:
+#   - some-service-name:
+#       from: some-docker-image
+env:
+   - DB=planb
+volumes:
+   - ${PWD}:/home/jhipster/code
+expose:
+  - 8080:8080
+  - 9000:9000
+  - 3001:3001
+# hosts:
+#   - some-host.com:127.0.0.1
+# before:
+#   - echo "before..."
+# after:
+#   - echo "after..."
+tasks:
+  env: env | sort
+  shell: /bin/bash
+  run: ./mvnw
+  jdl: jhipster import-jdl schema.jdl
