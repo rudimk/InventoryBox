@@ -90,7 +90,7 @@
     "lint": "tslint --type-check --project './tsconfig.json' -e 'node_modules/**'",
     "lint:fix": "yarn run lint -- --fix",
     "ngc": "ngc -p tsconfig-aot.json",
-    "cleanup": "rimraf target/{aot,www}",
+    "cleanup": "rm -rf target/{aot,www}",
     "clean-www": "rimraf target//www/app/{src,target/}",
     "start": "yarn run webpack:dev",
     "serve": "yarn run start",
