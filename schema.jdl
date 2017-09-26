@@ -1,0 +1,46 @@
+enum DeploymentStatus {
+	ACTIVE, INACTIVE
+}
+
+enum ServerStatus {
+	PROVISIONED, ACTIVE, INACTIVE, DEPROVISIONED
+}
+
+enum ServerOS {
+	UBUNTU, CENTOS, WINDOWS
+}
+
+entity Deployment {
+	deploymentName String,
+    status DeploymentStatus
+}
+
+entity Server {
+	serverName String required,
+    serverIP String required,
+    serverUser String required,
+    serverPassword String required,
+    serverStatus ServerStatus required,
+    serverOS ServerOS,
+    serverNotes String
+}
+
+entity Platform {
+	platformName String required,
+    platformHost String,
+    platformIP String,
+    platformUser String,
+    platformPassword String,
+    platformStatus ServerStatus required,
+    platformNotes String
+}
+
+relationship OneToOne {
+	Server{deployment} to Deployment
+}
+
+relationship OneToOne {
+	Platform{deployment} to Deployment
+}
+
+dto * with mapstruct
